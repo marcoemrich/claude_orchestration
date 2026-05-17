@@ -79,6 +79,11 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
     including the prediction blocks, are required on
     every cycle and that the predictions are the measured
     signal.
+- **Finding 8 — settings.json permission redundancy.**
+  Removed `Bash(pnpm test:*)`, `Bash(pnpm install:*)`,
+  `Bash(pnpm run:*)` — all already covered by
+  `Bash(pnpm:*)`. The Skill-permission sub-finding was
+  resolved automatically by Top fix 1 (skills now exist).
 
 ## Scorecard
 
