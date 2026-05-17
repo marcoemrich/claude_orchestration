@@ -8,6 +8,12 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
 - **Top fix 1 / Finding 2 — Skill vs Slash-Command mismatch** —
   fixed in `d9ffec9`. commands/ moved to skills/<name>/SKILL.md
   with frontmatter; tdd.md mechanism now matches its invocations.
+- **Top fix 3 / Finding 1 — missing static test suite** —
+  scaffolded `tests/` with `blueprint_contracts.py` and 38
+  static tests (file structure, agent + skill frontmatter,
+  rule line length, caching compliance, settings sanity).
+  `.claude/CLAUDE.md` intentionally omitted from contracts
+  pending Top fix 2.
 
 ## Scorecard
 
