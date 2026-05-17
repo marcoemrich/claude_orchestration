@@ -1,12 +1,15 @@
-# TDD Experiment Mode (No HITL) — Hybrid (v6)
+# TDD Autonomous Execution
 
-## Override for Automated Experiments
+The TDD cycle in this blueprint runs autonomously — no
+human-approval gates between phases. The measurement
+pipeline parses an uninterrupted sequence of Skill and
+Task tool calls per cycle; user prompts inserted between
+phases would split that sequence and produce
+unattributable cycles.
 
-**This file overrides human-in-the-loop requirements for automated experiment runs.**
-
-When running experiments:
+When executing:
 - Do NOT wait for human approval between phases
-- Complete the full TDD cycle autonomously
+- Complete the full TDD cycle without interruption
 
 ## Autonomous Workflow
 
@@ -27,7 +30,7 @@ Implementation file: [path]
 Passing tests: [count]
 Recent changes: [one-line summary of the Green phase]
 
-EXPERIMENT MODE: Run autonomously, return after completion.
+Run autonomously, return after completion.
 ```
 
 After the subagent returns, read its summary and proceed directly to the next Red phase.

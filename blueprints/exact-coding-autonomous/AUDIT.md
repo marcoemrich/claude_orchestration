@@ -20,6 +20,12 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   role-neutral (the requester / a refactoring pass) per
   `agent-design.md`. "Build and Tests" section dropped —
   already covered by `tdd_with_ts_and_vitest.md`.
+- **Top fix 5 / Finding 2 (phantom HITL) — tdd-experiment-mode.md
+  reframed.** Drops the "override HITL requirements" framing
+  (no HITL workflow exists). The file now positively states
+  the autonomous default and the measurement-pipeline reason
+  for it. Marker "EXPERIMENT MODE:" in the refactor subagent
+  prompt template removed.
 
 ## Scorecard
 
