@@ -1,3 +1,12 @@
+---
+name: green
+description: >
+  TDD Green Phase. Writes the smallest possible
+  implementation to turn the currently failing test green.
+  Hardcoded returns and obviously-incomplete logic are
+  preferred to over-implementation. No refactoring here.
+---
+
 # TDD Green Phase
 
 You are now in the **Green Phase** of TDD. Make the failing test pass with minimal code.
@@ -10,7 +19,15 @@ The Green Phase deliberately writes the smallest implementation that turns the a
 - It **prevents premature generalization**. The shape of the right abstraction emerges from the second and third test, not the first. Implementing for hypothetical future tests locks in a design before its constraints are known.
 - It **keeps the red-green-refactor cycle short**. Each cycle pays a cost in tokens and context; over-implementing in green collapses several future cycles into one large one and loses the per-test feedback loop.
 
-## Context: $ARGUMENTS
+## Inputs
+
+The invoker provides:
+
+- **Test file path** — the `.spec.ts` file
+- **Failing test name** — the test made executable in the
+  preceding red phase
+- **Current error** — compiler or assertion error from red
+- **Implementation file path** — the module under test
 
 ## Green Phase Rules
 

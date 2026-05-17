@@ -1,3 +1,13 @@
+---
+name: red
+description: >
+  TDD Red Phase. Activates exactly one it.todo() test,
+  records compile-error and runtime-error predictions,
+  verifies the test fails for the predicted reason. The
+  prediction block this skill emits is parsed by the
+  experiment's measurement pipeline.
+---
+
 # TDD Red Phase
 
 You are now in the **Red Phase** of TDD. Follow these instructions to activate ONE test and make it fail.
@@ -9,7 +19,14 @@ You are now in the **Red Phase** of TDD. Follow these instructions to activate O
 3. Verify the test fails for the right reason
 4. NO implementation during Red phase
 
-## Context: $ARGUMENTS
+## Inputs
+
+The invoker provides:
+
+- **Test file path** — the `.spec.ts` file with the test list
+- **Which `it.todo()` to activate** — by description or index
+- **Current passing-test count** — for the completion report
+- **Implementation file path** — the module under test
 
 ## Red Phase Rules
 

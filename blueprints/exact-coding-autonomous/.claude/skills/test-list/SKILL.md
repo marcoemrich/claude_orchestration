@@ -1,3 +1,12 @@
+---
+name: test-list
+description: >
+  TDD Test List Phase. Creates an it.todo() list for a
+  feature, scoped to base functionality (no edge cases, no
+  advanced features). First step of the TDD cycle; invoked
+  once per feature before the red phase.
+---
+
 # TDD Test List Phase
 
 You are now in the **Test List Phase** of TDD. Follow these instructions to create a comprehensive test list.
@@ -11,7 +20,14 @@ Create a test list using `it.todo()` for BASE FUNCTIONALITY ONLY:
 4. Order tests from simplest to most complex
 5. Avoid advanced features or edge cases
 
-## Context: $ARGUMENTS
+## Inputs
+
+The invoker provides:
+
+- **Feature name** — what is being implemented
+- **Test file path** — where the `.spec.ts` should be created
+- **Implementation file path** — the module under test
+- **Requirements / spec** — the kata or feature specification
 
 ## Test List Rules
 
