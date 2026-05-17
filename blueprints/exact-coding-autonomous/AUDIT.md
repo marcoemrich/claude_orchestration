@@ -26,6 +26,14 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   the autonomous default and the measurement-pipeline reason
   for it. Marker "EXPERIMENT MODE:" in the refactor subagent
   prompt template removed.
+- **Top fix 2 / Finding 4 (lead instructions missing) — decided
+  against.** The blueprint runs inside an automated evaluation
+  framework; the spec is supplied in the initial prompt and
+  `tdd.md` is auto-loaded from `.claude/rules/`. A Lead
+  CLAUDE.md would either duplicate `tdd.md` or contain
+  user-interaction guidance that does not apply. The contracts
+  file documents the omission so future contributors don't
+  re-introduce the question.
 
 ## Scorecard
 

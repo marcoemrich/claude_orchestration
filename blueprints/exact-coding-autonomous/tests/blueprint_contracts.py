@@ -15,9 +15,12 @@ REQUIRED_DIRECTORIES: list[str] = [
 ]
 
 # Required files inside .claude/
-# NOTE: .claude/CLAUDE.md is intentionally omitted — see AUDIT.md
-# Top fix 2. Add "CLAUDE.md" to this list once the lead
-# instructions file is authored.
+# NOTE: .claude/CLAUDE.md is intentionally absent in this
+# blueprint. The session runs inside an automated evaluation
+# framework with no user interaction; the feature spec is
+# provided in the initial prompt and tdd.md (auto-loaded
+# from .claude/rules/) carries all loop mechanics. A Lead
+# CLAUDE.md would have no unique content. See AUDIT.md.
 REQUIRED_CLAUDE_FILES: list[str] = [
     "settings.json",
 ]
