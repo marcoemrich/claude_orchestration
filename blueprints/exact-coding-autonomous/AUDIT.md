@@ -34,6 +34,11 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   user-interaction guidance that does not apply. The contracts
   file documents the omission so future contributors don't
   re-introduce the question.
+- **Finding 4 (blueprint design reference missing) — added.**
+  Authored `blueprints/exact-coding-autonomous/CLAUDE.md`
+  modeled on the autonomous blueprint's design reference:
+  overview, build/test, components table, conventions,
+  references. Maintainer-facing only — not loaded at runtime.
 
 ## Scorecard
 
