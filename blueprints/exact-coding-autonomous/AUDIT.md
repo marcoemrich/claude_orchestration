@@ -84,6 +84,15 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   `Bash(pnpm run:*)` — all already covered by
   `Bash(pnpm:*)`. The Skill-permission sub-finding was
   resolved automatically by Top fix 1 (skills now exist).
+- **Finding 10 — behavior-preserving cuts: deferred.**
+  Three candidates were identified (refactor.md "Remember"
+  and "Important Guidelines"; red/SKILL.md DO/DON'T).
+  Each duplicates content from Mission/Process/Rules but
+  the redundancy is mild and removing the bullet lists
+  reduces redundancy for human readers at the cost of
+  losing the "checklist at a glance" entry points agents
+  often pattern-match against. Keeping for now — revisit
+  if the files grow further or adherence regresses.
 
 ## Scorecard
 
