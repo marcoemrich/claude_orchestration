@@ -14,6 +14,12 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   rule line length, caching compliance, settings sanity).
   `.claude/CLAUDE.md` intentionally omitted from contracts
   pending Top fix 2.
+- **Top fix 4 / Finding 2 (workflow coupling) — refactor.md
+  decoupled from TDD pipeline.** Description, mission, section
+  headings, completion report, and red flags are now
+  role-neutral (the requester / a refactoring pass) per
+  `agent-design.md`. "Build and Tests" section dropped —
+  already covered by `tdd_with_ts_and_vitest.md`.
 
 ## Scorecard
 
