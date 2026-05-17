@@ -3,6 +3,12 @@
 Date: 2026-05-17
 Auditor: `/blueprint-audit` (Claude Opus 4.7)
 
+## Resolved
+
+- **Top fix 1 / Finding 2 — Skill vs Slash-Command mismatch** —
+  fixed in `d9ffec9`. commands/ moved to skills/<name>/SKILL.md
+  with frontmatter; tdd.md mechanism now matches its invocations.
+
 ## Scorecard
 
 Score: 2/11 clean
