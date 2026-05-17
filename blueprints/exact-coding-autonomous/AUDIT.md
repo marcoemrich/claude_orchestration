@@ -104,18 +104,25 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
     — real but limited-value gap. A PostToolUse hook
     would detect cycle breaks after the fact, not prevent
     them; defer until empirical need is shown.
-  - 11c (green-phase minimality) — real gap with
-    measurement impact: over-implementation collapses the
-    APP-mass-drop signal the refactor cycle is meant to
-    show. Fix candidate: extend the refactor-subagent
-    prompt template to flag unjustified code rather than
-    refactor it.
-  - 11d (`experiment-done.txt` timing) — real gap. Fix
-    candidate: gate the marker write on a fresh
-    `pnpm test` run confirming zero `it.todo` and all
-    tests passing.
-  Deferred to a separate change that can validate 11c
-  and 11d against a real experiment run.
+  - 11c (green-phase minimality) — **dropped**.
+    Originally framed as a fix; re-assessment shows it is
+    a diagnostic, not a fix. The empirical proxy
+    `tests_passed_immediately` is already at 0 / 10 in
+    v6.5.1 (RQ-14), driven by the Mandatory Procedure
+    preamble (7d). Adding a refactor-subagent flag would
+    only refine an already-zero measurement and not
+    improve discipline. Re-open only if a future
+    measurement regression suggests the proxy is
+    insufficient.
+  - 11d (`experiment-done.txt` timing) — real gap, but
+    failure mode has not occurred in empirics
+    (verification_pct 100/10, tests_passing 100/10
+    across RQ-13/14/15). Fix candidate kept for later:
+    gate the marker write on a fresh `pnpm test` run
+    confirming zero `it.todo` and all tests passing.
+    Worth implementing if the workflow is scaled to
+    larger katas or weaker models where the assumption
+    might break.
 
 ## Scorecard
 
