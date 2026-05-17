@@ -39,6 +39,12 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   modeled on the autonomous blueprint's design reference:
   overview, build/test, components table, conventions,
   references. Maintainer-facing only — not loaded at runtime.
+- **Finding 4 (root docs do not reference blueprint) — added.**
+  Root `README.md` gets blueprint row + "When to Use Which"
+  entries + Quick Start variant + new "exact-coding-autonomous
+  — Strict TDD for Evaluation" section. Root `CLAUDE.md` gets
+  components-table row, build-and-test command, and a
+  description section.
 
 ## Scorecard
 

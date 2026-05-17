@@ -95,6 +95,7 @@ sanity checks, and language-specific init procedures.
 |-----------|----------|--------|
 | **autonomous** | Full autonomy after plan approval via a plan queue | Lead, Developer, Reviewer, Test Engineer, Security Engineer |
 | **workflow** | User chooses a workflow after plan approval | Lead, Developer, Test Engineer, Security Engineer, Reviewer |
+| **exact-coding-autonomous** | Strict red-green-refactor TDD for automated evaluation runs | Lead, Refactor (subagent) |
 
 ### When to Use Which
 
@@ -106,6 +107,8 @@ sanity checks, and language-specific init procedures.
 | Lead stays responsive during execution | autonomous |
 | Multiple workflow options (supervised, autonomous, TDD) | workflow |
 | Per-commit user approval | workflow (Supervised) |
+| Strict TDD with measured prediction blocks | exact-coding-autonomous |
+| Headless evaluation framework run (no user in loop) | exact-coding-autonomous |
 
 ### Quick Start
 
@@ -114,6 +117,8 @@ sanity checks, and language-specific init procedures.
 cp -r blueprints/autonomous/.claude/ /path/to/your/project/.claude/
 # or
 cp -r blueprints/workflow/.claude/ /path/to/your/project/.claude/
+# or
+cp -r blueprints/exact-coding-autonomous/.claude/ /path/to/your/project/.claude/
 ```
 
 Start Claude Code in your project directory. The CLAUDE.md
@@ -249,6 +254,34 @@ Reviewer approves.
 
 Language-specific guidance loads automatically via
 conditional rules when agents touch matching files.
+
+### exact-coding-autonomous — Strict TDD for Evaluation
+
+Drives the red-green-refactor cycle as a measured sequence
+of Skill and Task calls. Intended for headless evaluation
+frameworks: no user interaction, no plan approval, no
+clarification gates — the feature spec arrives in the
+initial prompt and the session runs the loop until all
+tests pass, then writes a `experiment-done.txt` marker.
+
+**Agents:**
+
+| Agent | Model | Role |
+|-------|-------|------|
+| Lead | (any) | Invokes skills, launches refactor subagent, runs the loop |
+| Refactor (subagent) | (any) | Refactoring pass after each green — isolated context, applies APP and naming evaluation |
+
+**Skills:**
+
+- **`/test-list`** — writes the initial `it.todo()` list
+  scoped to base functionality of the feature
+- **`/red`** — activates exactly one `it.todo()`, records
+  compile- and runtime-error predictions, verifies failure
+- **`/green`** — writes the minimal implementation to turn
+  the active test green
+
+The Skill and Task tool calls per cycle are the measured
+signal. Tech stack: TypeScript + Vitest, pnpm.
 
 ## Devcontainer Templates
 

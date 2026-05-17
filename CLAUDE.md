@@ -16,6 +16,7 @@ first use — it is required to run the test suite.
 which uv || curl -LsSf https://astral.sh/uv/install.sh | sh
 uv run pytest blueprints/workflow/tests/ -m static -v
 uv run pytest blueprints/autonomous/tests/ -m static -v
+uv run pytest blueprints/exact-coding-autonomous/tests/ -m static -v
 ```
 
 ## Components
@@ -26,6 +27,7 @@ uv run pytest blueprints/autonomous/tests/ -m static -v
 | `/.claude/skills/` | Audit skills: `/blueprint-audit`, `/cache-audit` (never copied) |
 | `blueprints/workflow/` | Clarify-first blueprint — user chooses workflow |
 | `blueprints/autonomous/` | Autonomous blueprint — plan queue + developer |
+| `blueprints/exact-coding-autonomous/` | Strict TDD blueprint — automated evaluation, no user gates |
 | `devcontainer_templates/` | Devcontainer setup for sandboxed agent execution |
 | `CONTRIBUTING.md` | How to develop and extend blueprints |
 
@@ -56,6 +58,18 @@ Reviewer, Test Engineer, Security Engineer) plus the lead
 and the `plan-reviewer` subagent (launched before user
 plan presentation). The lead stays responsive to the user
 during execution.
+
+### exact-coding-autonomous
+
+Strict red-green-refactor TDD intended for headless
+evaluation. The feature spec arrives in the initial prompt;
+the session invokes `/test-list`, then `/red` + `/green`
+per test, then launches the `refactor` subagent after each
+green. No user interaction, no plan approval. The
+Skill/Task tool calls per cycle are the measured signal.
+TypeScript + Vitest + pnpm. One subagent (`refactor`); no
+Lead `.claude/CLAUDE.md` — `tdd.md` auto-loads and carries
+the loop mechanics.
 
 ### devcontainer_templates
 
