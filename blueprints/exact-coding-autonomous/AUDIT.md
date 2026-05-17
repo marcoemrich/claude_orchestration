@@ -1,4 +1,4 @@
-# Blueprint Audit: exact-coding
+# Blueprint Audit: exact-coding-autonomous
 
 Date: 2026-05-17
 Auditor: `/blueprint-audit` (Claude Opus 4.7)
@@ -26,7 +26,7 @@ Score: 2/11 clean
 ### 1 — Static tests
 
 ```
-blueprints/exact-coding/tests/             fail
+blueprints/exact-coding-autonomous/tests/             fail
   issue: directory does not exist; no blueprint_contracts.py,
          no static suite. CLAUDE.md "Session Checklist" requires
          `uv run pytest blueprints/<name>/tests/ -m static -v`.
@@ -39,7 +39,7 @@ blueprints/exact-coding/tests/             fail
 ### 2 — Cross-file consistency
 
 ```
-blueprints/exact-coding/.claude/rules/tdd.md:11-18                fail
+blueprints/exact-coding-autonomous/.claude/rules/tdd.md:11-18                fail
   issue: prescribes `Skill({ skill: "test-list" })` /
          `Skill({ skill: "red" })` / `Skill({ skill: "green" })`,
          but the files live under .claude/commands/ (slash
@@ -52,7 +52,7 @@ blueprints/exact-coding/.claude/rules/tdd.md:11-18                fail
          slash commands and update settings.json (drop "Skill"
          permission if unused).
 
-blueprints/exact-coding/.claude/commands/red.md:54,85              fail
+blueprints/exact-coding-autonomous/.claude/commands/red.md:54,85              fail
   issue: uses `pnpm test:unit:basic`; tdd.md:57 and
          tdd_with_ts_and_vitest.md:13 use `pnpm test`. Two
          different test commands for the same pipeline.
@@ -60,7 +60,7 @@ blueprints/exact-coding/.claude/commands/red.md:54,85              fail
          if the granular variant is needed, document why in
          tdd_with_ts_and_vitest.md.
 
-blueprints/exact-coding/.claude/rules/tdd-experiment-mode.md:3-7   fail
+blueprints/exact-coding-autonomous/.claude/rules/tdd-experiment-mode.md:3-7   fail
   issue: claims to "override human-in-the-loop requirements" —
          but no HITL workflow is defined anywhere in the
          blueprint. Phantom reference. Reader can't tell what
@@ -69,13 +69,13 @@ blueprints/exact-coding/.claude/rules/tdd-experiment-mode.md:3-7   fail
          or rephrase as the default and remove the "override"
          framing.
 
-blueprints/exact-coding/.claude/rules/tdd_with_ts_and_vitest.md    warn
+blueprints/exact-coding-autonomous/.claude/rules/tdd_with_ts_and_vitest.md    warn
   issue: filename uses underscores; tdd.md / tdd-experiment-mode.md
          use hyphens. Naming convention drift.
   fix:   rename to tdd-with-ts-and-vitest.md and update the
          @-reference in tdd.md:57.
 
-blueprints/exact-coding/.claude/agents/refactor.md:3,156           fail
+blueprints/exact-coding-autonomous/.claude/agents/refactor.md:3,156           fail
   issue: agent file encodes workflow facts: "After Green phase",
          "Proceeding to the next test", "Skipping refactoring
          phase entirely" as a red flag. Per agent-design.md,
@@ -85,7 +85,7 @@ blueprints/exact-coding/.claude/agents/refactor.md:3,156           fail
          use role-neutral language ("after receiving a request
          to refactor", "report back to the requester").
 
-blueprints/exact-coding/.claude/rules/tdd.md:11-18                 warn
+blueprints/exact-coding-autonomous/.claude/rules/tdd.md:11-18                 warn
   issue: terminology drift around the refactor subagent.
          Per terminology.md, the verb for subagents is "launch".
          tdd-experiment-mode.md:14 says "Launch refactor Task
@@ -97,7 +97,7 @@ blueprints/exact-coding/.claude/rules/tdd.md:11-18                 warn
 ### 3 — Rationale completeness
 
 ```
-blueprints/exact-coding/.claude/agents/refactor.md:13              warn
+blueprints/exact-coding-autonomous/.claude/agents/refactor.md:13              warn
   issue: "MUST attempt at least one refactoring - mandatory, not
          optional" has no rationale. Without it, the agent forces
          a no-op rename when no genuine improvement exists.
@@ -105,12 +105,12 @@ blueprints/exact-coding/.claude/agents/refactor.md:13              warn
          counts refactorings_applied; a missing attempt drops
          the cycle's signal to zero — see tdd.md").
 
-blueprints/exact-coding/.claude/agents/refactor.md:101             warn
+blueprints/exact-coding-autonomous/.claude/agents/refactor.md:101             warn
   issue: "Make ONE improvement at a time" — no rationale.
   fix:   add "so that a test break can be bisected to the single
          change that caused it."
 
-blueprints/exact-coding/.claude/commands/test-list.md:42           warn
+blueprints/exact-coding-autonomous/.claude/commands/test-list.md:42           warn
   issue: "Order tests simple → complex" — no rationale.
   fix:   add "early tests force minimal implementations;
          later tests build pressure that drives generalization
@@ -120,15 +120,15 @@ blueprints/exact-coding/.claude/commands/test-list.md:42           warn
 ### 4 — Documentation alignment
 
 ```
-blueprints/exact-coding/CLAUDE.md                                  fail
+blueprints/exact-coding-autonomous/CLAUDE.md                                  fail
   issue: missing entirely. autonomous/ and workflow/ both have a
          design-reference CLAUDE.md (Build/Test, Components,
          Conventions, References). This is the file the
          "Session Checklist" in /CLAUDE.md expects.
-  fix:   create blueprints/exact-coding/CLAUDE.md mirroring the
+  fix:   create blueprints/exact-coding-autonomous/CLAUDE.md mirroring the
          autonomous template.
 
-blueprints/exact-coding/.claude/CLAUDE.md                          fail
+blueprints/exact-coding-autonomous/.claude/CLAUDE.md                          fail
   issue: missing — no lead instructions. The session starting in
          a target project has no entry point telling it when to
          enter the TDD loop, how to clarify, or how to interpret
@@ -138,16 +138,16 @@ blueprints/exact-coding/.claude/CLAUDE.md                          fail
          clarification, and dispatch into /test-list.
 
 README.md, /CLAUDE.md                                              fail
-  issue: neither references the exact-coding blueprint. Both
+  issue: neither references the exact-coding-autonomous blueprint. Both
          describe only autonomous + workflow.
-  fix:   add an exact-coding row to the blueprint tables and a
+  fix:   add an exact-coding-autonomous row to the blueprint tables and a
          short "When to Use" entry.
 ```
 
 ### 7 — Instruction gap audit
 
 ```
-blueprints/exact-coding/.claude/agents/refactor.md:18              warn (7a)
+blueprints/exact-coding-autonomous/.claude/agents/refactor.md:18              warn (7a)
   issue: "If no improvement is possible, explicitly document why"
          — no concrete bar for "improvement possible". With a
          strict "MUST attempt" rule and a fuzzy escape ("not
@@ -157,7 +157,7 @@ blueprints/exact-coding/.claude/agents/refactor.md:18              warn (7a)
          can be tightened OR APP mass drops by ≥1 OR a clear
          smell (duplication, mutable state) is removable.
 
-blueprints/exact-coding/.claude/rules/tdd.md (whole file)          warn (7b)
+blueprints/exact-coding-autonomous/.claude/rules/tdd.md (whole file)          warn (7b)
   issue: workflow is described as a startup sequence (Test List →
          Red → Green → Refactor) without an explicit per-feature
          re-entry contract. After one feature, does the lead
@@ -165,7 +165,7 @@ blueprints/exact-coding/.claude/rules/tdd.md (whole file)          warn (7b)
   fix:   add "Per-feature gate: each new feature/kata re-runs
          /test-list before any /red invocation."
 
-blueprints/exact-coding/.claude/commands/red.md:54,85              warn (7c)
+blueprints/exact-coding-autonomous/.claude/commands/red.md:54,85              warn (7c)
   issue: prediction-failure protocol (lines 119-130) says "STOP
          and explain discrepancy" but doesn't define who breaks
          the loop. Agent under pressure self-explains and
@@ -174,7 +174,7 @@ blueprints/exact-coding/.claude/commands/red.md:54,85              warn (7c)
          prediction matched. A failed prediction is a blocker,
          not a retry."
 
-blueprints/exact-coding/.claude/commands/red.md (whole)            warn (7d)
+blueprints/exact-coding-autonomous/.claude/commands/red.md (whole)            warn (7d)
   issue: 7-step procedure where Step 1 produces observable state
          (test activated). An agent could skip predictions
          (Steps 2,5) if the test already fails as expected.
@@ -190,7 +190,7 @@ blueprints/exact-coding/.claude/commands/red.md (whole)            warn (7d)
 ### 8 — Configuration coupling
 
 ```
-blueprints/exact-coding/.claude/settings.json:9-12                 warn
+blueprints/exact-coding-autonomous/.claude/settings.json:9-12                 warn
   issue: `Bash(pnpm:*)` already covers `pnpm test:*`,
          `pnpm install:*`, `pnpm run:*`. Three subordinate
          allow-entries are dead. If the broad rule is later
@@ -198,7 +198,7 @@ blueprints/exact-coding/.claude/settings.json:9-12                 warn
   fix:   drop the three sub-entries OR remove `pnpm:*` and keep
          only the narrow ones (preferred per least-privilege).
 
-blueprints/exact-coding/.claude/settings.json:17                   warn
+blueprints/exact-coding-autonomous/.claude/settings.json:17                   warn
   issue: "Skill" permission listed but no .claude/skills/
          directory exists in this blueprint. Permission is for
          a mechanism the blueprint doesn't use (see Finding 2,
@@ -210,18 +210,18 @@ blueprints/exact-coding/.claude/settings.json:17                   warn
 ### 10 — Behavior-preserving cuts
 
 ```
-blueprints/exact-coding/.claude/agents/refactor.md:258-265         info
+blueprints/exact-coding-autonomous/.claude/agents/refactor.md:258-265         info
   issue: "Remember" section restates Mission and Important
          Guidelines verbatim. Pure echo — passes all four
          sub-tests.
   fix:   delete the "Remember" section (~8 lines saved).
 
-blueprints/exact-coding/.claude/agents/refactor.md:158-172         info
+blueprints/exact-coding-autonomous/.claude/agents/refactor.md:158-172         info
   issue: "What to DO" / "What NOT to do" lists duplicate the
          Process section (Step 1-6) and Critical Project Context.
   fix:   delete; the process is the contract (~15 lines saved).
 
-blueprints/exact-coding/.claude/commands/red.md:106-117            info
+blueprints/exact-coding-autonomous/.claude/commands/red.md:106-117            info
   issue: "DO / DON'T" repeats Red Phase Rules (lines 14-20)
          almost verbatim.
   fix:   delete the DO/DON'T block (~12 lines saved).
@@ -271,7 +271,7 @@ guarantee: experiment-done.txt is written exactly when "all tests
 
 ## Top fixes
 
-1. **`blueprints/exact-coding/.claude/rules/tdd.md:11-18`** — fix
+1. **`blueprints/exact-coding-autonomous/.claude/rules/tdd.md:11-18`** — fix
    the Skill vs. Slash-Command mismatch (move files into
    `.claude/skills/` OR change invocations to `/test-list`, `/red`,
    `/green`).
@@ -279,25 +279,25 @@ guarantee: experiment-done.txt is written exactly when "all tests
    tool calls — wrong mechanism = silent zero metric across every
    run.
 
-2. **`blueprints/exact-coding/.claude/CLAUDE.md` (create)** —
+2. **`blueprints/exact-coding-autonomous/.claude/CLAUDE.md` (create)** —
    author lead instructions modeled on
    `autonomous/.claude/CLAUDE.md`.
    *Why:* without it, the blueprint has no entry point; nothing
    tells a session when to start the TDD loop, how to clarify, or
    how to choose experiment vs. HITL mode.
 
-3. **`blueprints/exact-coding/tests/` (create)** — scaffold a
+3. **`blueprints/exact-coding-autonomous/tests/` (create)** — scaffold a
    static test suite with `blueprint_contracts.py`.
    *Why:* the project-level Session Checklist mandates it; without
    it, every other check here regresses silently on the next edit.
 
-4. **`blueprints/exact-coding/.claude/agents/refactor.md:3,156`** —
+4. **`blueprints/exact-coding-autonomous/.claude/agents/refactor.md:3,156`** —
    strip workflow coupling ("After Green phase", "Proceeding to
    next test"); use role-neutral language.
    *Why:* per `agent-design.md`, agent files must be reusable; the
    current refactor agent only works inside this exact TDD pipeline.
 
-5. **`blueprints/exact-coding/.claude/rules/tdd-experiment-mode.md:3`** —
+5. **`blueprints/exact-coding-autonomous/.claude/rules/tdd-experiment-mode.md:3`** —
    remove the phantom HITL override OR add the HITL workflow it
    claims to override.
    *Why:* the override framing is non-falsifiable today; a future
