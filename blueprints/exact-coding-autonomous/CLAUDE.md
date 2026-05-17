@@ -24,7 +24,7 @@ uv run pytest blueprints/exact-coding-autonomous/tests/ -m static -v
 | `.claude/agents/refactor.md` | Refactoring specialist launched as a Task subagent after each green |
 | `.claude/rules/tdd.md` | Loop mechanics — which Skill/Task to invoke for each phase, why delegation is required for the metrics |
 | `.claude/rules/tdd-experiment-mode.md` | Autonomous-execution rule: no human gates between phases; refactor-subagent prompt template; done-marker |
-| `.claude/rules/tdd_with_ts_and_vitest.md` | Tech stack — `.spec.ts` extension, Vitest functions, `pnpm test` |
+| `.claude/rules/tdd-with-ts-and-vitest.md` | Tech stack — `.spec.ts` extension, Vitest functions, `pnpm test` |
 | `.claude/skills/test-list/SKILL.md` | Skill: writes the initial `it.todo()` list scoped to base functionality |
 | `.claude/skills/red/SKILL.md` | Skill: activates one `it.todo()`, records prediction blocks parsed by the measurement pipeline |
 | `.claude/skills/green/SKILL.md` | Skill: writes the minimal implementation to turn the active test green |

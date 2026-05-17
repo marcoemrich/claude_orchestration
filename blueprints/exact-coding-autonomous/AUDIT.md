@@ -45,6 +45,15 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   — Strict TDD for Evaluation" section. Root `CLAUDE.md` gets
   components-table row, build-and-test command, and a
   description section.
+- **Finding 2 remainder — consistency cleanups.**
+  - `red/SKILL.md`: `pnpm test:unit:basic` → `pnpm test`
+    (matches `tdd.md` and `tdd-with-ts-and-vitest.md`).
+  - `tdd_with_ts_and_vitest.md` → `tdd-with-ts-and-vitest.md`
+    (hyphen naming convention). References in `tdd.md`,
+    `CLAUDE.md`, `blueprint_contracts.py` updated.
+  - `tdd-experiment-mode.md`: "Launch `refactor` Task subagent"
+    → "Launch the `refactor` subagent via the Task tool"
+    (terminology.md).
 
 ## Scorecard
 

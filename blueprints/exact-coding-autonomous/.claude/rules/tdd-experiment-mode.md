@@ -17,7 +17,7 @@ When executing:
 2. **For each test:**
    - **Red Phase** → Invoke `/red` skill (main context)
    - **Green Phase** → Invoke `/green` skill (main context)
-   - **Refactor Phase** → Launch `refactor` Task subagent (isolated context)
+   - **Refactor Phase** → Launch the `refactor` subagent via the Task tool (isolated context)
 3. **Continue** until all tests are implemented
 
 ## Required Prompt Context for the Refactor Subagent

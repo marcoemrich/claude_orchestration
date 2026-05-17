@@ -30,7 +30,7 @@ REQUIRED_ROOT_FILES: list[str] = [
     ".claude/agents/refactor.md",
     ".claude/rules/tdd.md",
     ".claude/rules/tdd-experiment-mode.md",
-    ".claude/rules/tdd_with_ts_and_vitest.md",
+    ".claude/rules/tdd-with-ts-and-vitest.md",
     ".claude/skills/test-list/SKILL.md",
     ".claude/skills/red/SKILL.md",
     ".claude/skills/green/SKILL.md",

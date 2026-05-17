@@ -55,4 +55,4 @@ Return to step 2 with the next test from the list.
 
 ## Technical Setup
 
-See `@.claude/rules/tdd_with_ts_and_vitest.md` for TypeScript and Vitest configuration. Run tests with `pnpm test`.
+See `@.claude/rules/tdd-with-ts-and-vitest.md` for TypeScript and Vitest configuration. Run tests with `pnpm test`.
