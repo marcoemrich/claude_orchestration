@@ -84,15 +84,30 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   `Bash(pnpm run:*)` — all already covered by
   `Bash(pnpm:*)`. The Skill-permission sub-finding was
   resolved automatically by Top fix 1 (skills now exist).
-- **Finding 10 — behavior-preserving cuts: deferred.**
-  Three candidates were identified (refactor.md "Remember"
-  and "Important Guidelines"; red/SKILL.md DO/DON'T).
-  Each duplicates content from Mission/Process/Rules but
-  the redundancy is mild and removing the bullet lists
-  reduces redundancy for human readers at the cost of
-  losing the "checklist at a glance" entry points agents
-  often pattern-match against. To be evaluated as an
-  isolated experiment.
+- **Finding 10 — behavior-preserving cuts: partially
+  applied after empirical validation (RQ-15 → RQ-17).**
+  Three candidates were tested as separate workflow
+  variants in the lab:
+  - **10a** (`refactor.md` "Remember", end-of-file): KEPT.
+    RQ-15 (v6.5.2, all three cut) and RQ-16 (v6.5.3, only
+    10a kept) showed this section is the Floor-Anker:
+    removing it drops `tests_passed_immediately` from
+    0/10 to 1/10 and `refactorings_applied` min from
+    7 to 5. End-of-file position acts as a final
+    invariant pass before subagent output.
+  - **10b** (`refactor.md` "Important Guidelines"
+    DO/DON'T, mid-file): **APPLIED**. RQ-17 (v6.5.4)
+    confirmed this cut is the source of the
+    quality wins (`cognitive_max` −25 %, `mccabe_max`
+    −22 %, σ across most metrics down) without
+    side effects on discipline or pred-rate.
+  - **10c** (`red/SKILL.md` "Important Guidelines"
+    DO/DON'T): KEPT. RQ-16 (v6.5.3, cut) regressed
+    `predictions_correct_rate` to 95.8 %; RQ-17 (v6.5.4,
+    restored) jumped to 100 %. The block is
+    prediction-hygiene scaffolding.
+  Net change in this blueprint: refactor.md 270 → 254
+  lines. Aligns with lab champion v6.5.4-refactor-cut-only.
 
 ## Deferred
 

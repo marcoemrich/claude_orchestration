@@ -165,22 +165,6 @@ Refactoring Complete:
 
 Return the report to the requester.
 
-## Important Guidelines
-
-### What to DO
-- MUST attempt at least one refactoring
-- Evaluate naming FIRST
-- Calculate APP mass before and after
-- Keep tests green at all times
-- Document all decisions
-- Explain why if no improvement possible
-
-### What NOT to do
-- Never return without attempting at least one improvement
-- Never break tests during refactoring
-- Never refactor multiple things at once
-- Never say "no refactoring needed" without detailed explanation
-
 ## Example Refactoring Scenarios
 
 ### Scenario 1: Naming Improvement
