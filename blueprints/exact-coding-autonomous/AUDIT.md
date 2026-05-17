@@ -54,6 +54,13 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   - `tdd-experiment-mode.md`: "Launch `refactor` Task subagent"
     → "Launch the `refactor` subagent via the Task tool"
     (terminology.md).
+- **Finding 3 — rationale gaps closed.**
+  - `refactor.md:12` "MUST attempt at least one refactoring"
+    now cites the measurement-pipeline reason.
+  - `refactor.md:98` "Make ONE improvement at a time" now
+    cites bisectability.
+  - `test-list/SKILL.md` Step 3 (simple → complex) now
+    explains the green-phase generalization pattern.
 
 ## Scorecard
 

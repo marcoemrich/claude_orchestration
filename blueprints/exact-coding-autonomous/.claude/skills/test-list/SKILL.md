@@ -56,6 +56,15 @@ The invoker provides:
 List 3-6 test cases covering base functionality only.
 
 ### Step 3: Order Tests (Simple → Complex)
+
+Order from simplest to most complex. Early simple tests
+force minimal implementations (hardcoded returns, no
+generalization); later tests build pressure that drives
+incremental generalization. Starting with a complex test
+jumps straight to the general solution and loses the
+stepwise pattern the Green phase relies on (`hardcoded`
+→ `conditional` → `reduce` in the green-phase example).
+
 1. Simplest case (often empty/zero)
 2. Single element
 3. Two elements
