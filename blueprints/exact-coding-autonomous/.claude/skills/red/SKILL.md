@@ -12,6 +12,17 @@ description: >
 
 You are now in the **Red Phase** of TDD. Follow these instructions to activate ONE test and make it fail.
 
+## Mandatory Procedure
+
+**All seven steps below are mandatory on every red cycle.**
+Predictions (Steps 2 and 5) are not optional even when the
+failure looks obvious — they are the measured signal.
+Skipping or collapsing a prediction block drops
+`predictions_correct_rate` to zero for the cycle and
+invalidates the data point. A wrong prediction is
+expected output (record `Incorrect` and continue), not a
+reason to skip.
+
 ## Your Mission
 
 1. Activate exactly ONE test from the test list
@@ -68,9 +79,11 @@ Red Phase - Compilation Error Prediction:
 
 ### Step 3: Run Test - Verify Compilation Error
 
-Run `pnpm test` and verify:
-- Compilation error as predicted, OR
-- Prediction wrong → STOP and explain discrepancy
+Run `pnpm test` and record the actual result. The Step 7
+prediction block reports whether the Step 2 prediction
+was `Correct` or `Incorrect`. Either way, proceed to
+Step 4 — a wrong prediction is a data point, not a
+blocker.
 
 ### Step 4: Create Empty Function
 
@@ -99,9 +112,10 @@ Red Phase - Runtime Error Prediction:
 
 ### Step 6: Run Test - Verify Runtime Error
 
-Run `pnpm test` and verify:
-- Assertion error as predicted, OR
-- Prediction wrong → STOP and explain discrepancy
+Run `pnpm test` and record the actual result. The Step 7
+prediction block reports whether the Step 5 prediction
+was `Correct` or `Incorrect`. Either way, proceed to
+Step 7.
 
 ### Step 7: Report Completion
 
@@ -131,20 +145,24 @@ Proceeding to Green phase.
 - Activate multiple tests
 - Skip making predictions
 - Write implementation to make test pass
-- Continue if prediction fails without explanation
+- Suppress or rewrite a wrong prediction after seeing the result
 
-## Prediction Failure Protocol
+## Wrong Predictions Are Data
 
-If your prediction was wrong:
+A prediction can be wrong — that is the point of recording
+it. The Step 7 block reports `Correct` or `Incorrect`; the
+measurement pipeline aggregates the rate across cycles.
 
-```
-Prediction Failed:
-- Predicted: [what you expected]
-- Actual: [what happened]
-- Discrepancy: [explanation]
+When a prediction was wrong:
 
-Investigating the discrepancy before proceeding.
-```
+- Do **not** edit the original Step 2 / Step 5 prediction
+  to match the observed result. The recorded prediction
+  must be the one you made *before* running the test.
+- Do **not** skip the report block or merge the two
+  prediction lines into a summary. The parser needs both
+  lines verbatim.
+- Do continue the cycle through Step 7. Wrong predictions
+  do not block progression — they populate the metric.
 
 ## Completion
 

@@ -13,7 +13,20 @@ Guide the requester through a refactoring pass by helping them:
 2. Use Absolute Priority Premise (APP) to measure code improvements
 3. Improve code quality while keeping all tests green
 4. Document refactoring decisions and mass calculations
-5. If no improvement is possible, explicitly document why
+5. If no improvement is possible, explicitly document why.
+   "No improvement possible" means **none** of the
+   following applies:
+   - the name can be tightened to better match current
+     behavior (more specific, less generic), or
+   - APP mass drops by ≥1 through any refactoring, or
+   - a clear smell is removable — duplication, mutable
+     state, a conditional that simplifies to an expression.
+
+   If any of these is achievable, the refactoring is
+   possible and Rule 1 (mandatory attempt) applies. If
+   none applies, document each path and why it does not.
+   A generic "code is already optimal" without addressing
+   the three paths is not sufficient.
 
 ## Refactoring Rules
 

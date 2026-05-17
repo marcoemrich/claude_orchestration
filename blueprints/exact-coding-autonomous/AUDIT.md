@@ -61,6 +61,24 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
     cites bisectability.
   - `test-list/SKILL.md` Step 3 (simple → complex) now
     explains the green-phase generalization pattern.
+- **Finding 7 — instruction gaps closed (7b skipped per
+  decision).**
+  - 7a: "no improvement possible" given a concrete bar
+    in `refactor.md` Mission item 5 — name tightening,
+    APP mass ≥1, or removable smell. Each path must be
+    addressed before claiming exhaustion.
+  - 7c: `red/SKILL.md` Steps 3 and 6 no longer carry a
+    "STOP and explain" branch — wrong predictions are
+    treated as data, not blockers, since this blueprint
+    runs without human escalation. The "Prediction
+    Failure Protocol" section is replaced by "Wrong
+    Predictions Are Data", which forbids backfilling
+    or rewriting a prediction after seeing the result.
+  - 7d: `red/SKILL.md` gets a "Mandatory Procedure"
+    preamble before Step 1 stating that all seven steps,
+    including the prediction blocks, are required on
+    every cycle and that the predictions are the measured
+    signal.
 
 ## Scorecard
 
