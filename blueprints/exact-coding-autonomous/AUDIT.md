@@ -91,8 +91,31 @@ Auditor: `/blueprint-audit` (Claude Opus 4.7)
   the redundancy is mild and removing the bullet lists
   reduces redundancy for human readers at the cost of
   losing the "checklist at a glance" entry points agents
-  often pattern-match against. Keeping for now — revisit
-  if the files grow further or adherence regresses.
+  often pattern-match against. To be evaluated as an
+  isolated experiment.
+
+## Deferred
+
+- **Finding 11 — handoff coverage: deferred for evaluation.**
+  Re-assessment in the automated-framework context:
+  - 11a (spec completeness before `/test-list`) — out of
+    blueprint scope; the framework supplies the spec.
+  - 11b (predictions actually recorded in parsed format)
+    — real but limited-value gap. A PostToolUse hook
+    would detect cycle breaks after the fact, not prevent
+    them; defer until empirical need is shown.
+  - 11c (green-phase minimality) — real gap with
+    measurement impact: over-implementation collapses the
+    APP-mass-drop signal the refactor cycle is meant to
+    show. Fix candidate: extend the refactor-subagent
+    prompt template to flag unjustified code rather than
+    refactor it.
+  - 11d (`experiment-done.txt` timing) — real gap. Fix
+    candidate: gate the marker write on a fresh
+    `pnpm test` run confirming zero `it.todo` and all
+    tests passing.
+  Deferred to a separate change that can validate 11c
+  and 11d against a real experiment run.
 
 ## Scorecard
 
